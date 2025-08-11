@@ -103,3 +103,77 @@ Required Environment Variables:
 Usage:
 chmod +x deploy_onprem.sh
 ./deploy_onprem.sh
+
+
+✅ Your Docker setup for running HashiCorp Vault in development mode is added to Docker files: 
+
+🧪 How to Use
+1. Build and start Vault:
+1. docker-compose up --build -d
+
+2. Access Vault UI or CLI:
+    • Web UI: http://localhost:8200
+    • CLI:
+    • export VAULT_ADDR=http://localhost:8200
+export VAULT_TOKEN=root
+vault status
+
+3. Store secrets:
+3. vault kv put secret/honeypotfarm DB_PASSWORD=secure123 API_KEY=abc123
+
+
+✅ Vault initialization and AppRole setup are now automated for the Honeypot Farm container.
+📄 Download the updated files:
+• Dockerfile
+• docker-compose.yml
+These files now support:
+• Auto-initialization of Vault on container startup
+• Unsealing and login with root token
+• Enabling KV secrets engine
+• Creating a read-only policy for honeypotfarm
+• Configuring AppRole and saving ROLE_ID and SECRET_ID to files
+
+Your backend is now configured to automatically inject secrets from Vault using AppRole credentials stored in container-mounted files.
+📄 Updated files:
+• Dockerfile
+• docker-compose.yml
+⸻
+🔧 How It Works
+• On backend startup, it reads ROLE_ID.txt and SECRET_ID.txt from the Vault container.
+• Authenticates with Vault using AppRole.
+• Retrieves secrets from secret/data/honeypotfarm.
+• Injects them as environment variables for use in your FastAPI app.
+
+✅ Error handling has been added to the Vault secret injection process in Honeypot Farm's backend.
+📄 Updated files:
+• Dockerfile
+• docker-compose.yml
+⸻
+🛡️ Error Handling Features
+• Logs if Vault is unreachable
+• Logs if AppRole credentials are missing or unreadable
+• Logs if authentication fails
+• Logs if secrets cannot be retrieved
+• Gracefully exits without crashing the backend
+
+✅ Honeypot Farm's backend is now configured to send logs to a centralized logging system.
+📄 Updated files:
+• Dockerfile
+• docker-compose.yml
+⸻
+🧠 Supported Logging Backends
+• ELK Stack: via Syslog (LOGGING_BACKEND=elk)
+• Loki: via HTTP push (LOGGING_BACKEND=loki)
+🔧 Environment Variables
+Set these in your .env or deployment config:
+LOGGING_BACKEND=loki
+LOGGING_HOST=localhost
+LOGGING_PORT=3100
+
+📝 Logs Sent
+• Vault secret injection status
+• Authentication success/failure
+• Errors and warnings
+
+Would you like help visualizing these logs in Grafana or Kibana dashboards?
+post a request
