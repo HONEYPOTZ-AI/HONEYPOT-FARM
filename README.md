@@ -1,179 +1,89 @@
-# HONEYPOT-FARM
-Honeypot Farm is a cutting-edge SaaS platform that deploys thousands of virtual honeypots across cloud environments to mislead, trap, and study cyber attackers. By creating a maze of artificial network assets, Honeypot Farm turns your infrastructure into a proactive defense system.
+# Welcome to your EzSite project
 
-🔐 Problem
-Traditional cybersecurity tools focus on detection and response. However, attackers are becoming more sophisticated, using AI and quantum-resistant techniques to bypass defenses. Organizations need deceptive environments that confuse and slow down attackers while gathering actionable intelligence.
-⸻
-💡 Solution
-Honeypot Farm offers:
-• Massive-scale honeypot deployment across AWS, Azure, and GCP.
-• AI-driven adaptive honeypots that evolve based on attacker behavior.
-• Real-time threat intelligence and behavioral analytics.
-• Compliance-ready architecture (HIPAA, GDPR, Safe AI Act).
-⸻
-🎯 Target Markets
-• Enterprise Security Teams
-• Managed Security Service Providers (MSSPs)
-• Government & Healthcare
-• Cloud-native Startups
-⸻
-📊 Business Model
-• Subscription-based SaaS with tiered pricing.
-• Add-ons for advanced analytics, compliance modules, and custom honeypot templates.
-• API access for integration with SIEM, XDR, and SOC platforms.
-⸻
-🧠 Tech Stack
-• Frontend: React + TypeScript
-• Backend: FastAPI
-• Infrastructure: Terraform + Trusted Execution Environments (TEE)
-• Cloud: Azure, AWS, GCP
-⸻
-📈 Traction & Vision
-• MVP in development
-• Strategic partnerships in progress
-• Vision: Become the standard for cyber deception in cloud-native environments
+A clean, modern React template with TypeScript, Vite, TailwindCSS, and ShadCN UI components. This template provides a solid foundation for building web applications with best practices in mind.
 
-Honeypot Farm Backend Deployment Scripts
-This repository contains deployment scripts for deploying the Honeypot Farm backend across multiple environments: Azure, AWS, GCP, and On-Prem.
-⸻
-🛠️ Prerequisites
-Common
-• Python 3.8+
-• Docker
-• Git
-• SSH access (for on-prem deployment)
-• Environment variables configured for each platform
-⸻
-☁️ Azure Deployment
-Script: deploy_azure.sh
-Prerequisites:
-• Azure CLI installed and logged in
-• Subscription with access to DCsv3-series VMs (Intel SGX)
-• Resource group and virtual network created
-Required Environment Variables:
-• AZURE_CLIENT_ID
-• AZURE_TENANT_ID
-• AZURE_SUBSCRIPTION_ID
-• AZURE_CLIENT_SECRET
-• AZURE_RESOURCE_GROUP
-• AZURE_LOCATION
-Usage:
-chmod +x deploy_azure.sh
-./deploy_azure.sh
+## Tech Features
 
-⸻
-☁️ AWS Deployment
-Script: deploy_aws.sh
-Prerequisites:
-• AWS CLI installed and configured
-• EC2 key pair and security group set up
-Required Environment Variables:
-• AWS_ACCESS_KEY_ID
-• AWS_SECRET_ACCESS_KEY
-• AWS_REGION
-Usage:
-chmod +x deploy_aws.sh
-./deploy_aws.sh
+- ⚡️ **Vite** - Lightning fast build tool
+- 🔥 **React 18** - Latest React features
+- 🧩 **TypeScript** - Type safety for better developer experience
+- 🎨 **TailwindCSS** - Utility-first CSS framework
+- 🧰 **ShadCN UI** - Accessible and customizable UI components
+- 📱 **Responsive Design** - Mobile-first approach
+- 🧭 **React Router** - Easy client-side routing
+- 🔄 **React Query** - Data fetching and state management
+- 🧪 **Form Handling** - React Hook Form with Zod validation
 
-⸻
-☁️ GCP Deployment
-Script: deploy_gcp.sh
-Prerequisites:
-• GCP SDK installed
-• Service account with compute admin permissions
-Required Environment Variables:
-• GCP_PROJECT_ID
-• GCP_CLIENT_EMAIL
-• GCP_PRIVATE_KEY
-• GCP_REGION
-Usage:
-chmod +x deploy_gcp.sh
-./deploy_gcp.sh
+## Getting Started
 
-⸻
-🏠 On-Prem Deployment
-Script: deploy_onprem.sh
-Prerequisites:
-• SSH access to on-prem server
-• Docker installed on target machine
-Required Environment Variables:
-• SSH_PRIVATE_KEY
-• ONPREM_HOST
-• ONPREM_USER
-Usage:
-chmod +x deploy_onprem.sh
-./deploy_onprem.sh
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn or pnpm
 
-✅ Your Docker setup for running HashiCorp Vault in development mode is added to Docker files: 
+### Installation
 
-🧪 How to Use
-1. Build and start Vault:
-1. docker-compose up --build -d
+1. Clone this repository:
+```bash
+git clone https://github.com/your-username/react-template-project.git
+cd react-template-project
+```
 
-2. Access Vault UI or CLI:
-    • Web UI: http://localhost:8200
-    • CLI:
-    • export VAULT_ADDR=http://localhost:8200
-export VAULT_TOKEN=root
-vault status
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn
+# or
+pnpm install
+```
 
-3. Store secrets:
-3. vault kv put secret/honeypotfarm DB_PASSWORD=secure123 API_KEY=abc123
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
+4. Open your browser and visit `http://localhost:5173`
 
-✅ Vault initialization and AppRole setup are now automated for the Honeypot Farm container.
-📄 Download the updated files:
-• Dockerfile
-• docker-compose.yml
-These files now support:
-• Auto-initialization of Vault on container startup
-• Unsealing and login with root token
-• Enabling KV secrets engine
-• Creating a read-only policy for honeypotfarm
-• Configuring AppRole and saving ROLE_ID and SECRET_ID to files
+## Project Structure
 
-Your backend is now configured to automatically inject secrets from Vault using AppRole credentials stored in container-mounted files.
-📄 Updated files:
-• Dockerfile
-• docker-compose.yml
-⸻
-🔧 How It Works
-• On backend startup, it reads ROLE_ID.txt and SECRET_ID.txt from the Vault container.
-• Authenticates with Vault using AppRole.
-• Retrieves secrets from secret/data/honeypotfarm.
-• Injects them as environment variables for use in your FastAPI app.
+```
+react-template-project/
+├── public/              # Static assets
+│   ├── components/      # Reusable components
+│   │   └── ui/          # UI components from ShadCN
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions and libraries
+│   ├── pages/           # Page components
+│   ├── App.tsx          # Main application component
+│   ├── index.css        # Global styles
+│   └── main.tsx         # Application entry point
+├── .gitignore
+├── package.json         # Project dependencies and scripts
+├── tailwind.config.ts   # TailwindCSS configuration
+├── tsconfig.json        # TypeScript configuration
+└── vite.config.ts       # Vite configuration
+```
 
-✅ Error handling has been added to the Vault secret injection process in Honeypot Farm's backend.
-📄 Updated files:
-• Dockerfile
-• docker-compose.yml
-⸻
-🛡️ Error Handling Features
-• Logs if Vault is unreachable
-• Logs if AppRole credentials are missing or unreadable
-• Logs if authentication fails
-• Logs if secrets cannot be retrieved
-• Gracefully exits without crashing the backend
+## Customization
 
-✅ Honeypot Farm's backend is now configured to send logs to a centralized logging system.
-📄 Updated files:
-• Dockerfile
-• docker-compose.yml
-⸻
-🧠 Supported Logging Backends
-• ELK Stack: via Syslog (LOGGING_BACKEND=elk)
-• Loki: via HTTP push (LOGGING_BACKEND=loki)
-🔧 Environment Variables
-Set these in your .env or deployment config:
-LOGGING_BACKEND=loki
-LOGGING_HOST=localhost
-LOGGING_PORT=3100
+- **Styling**: Modify `tailwind.config.ts` to customize your design tokens
+- **Components**: Add or modify components in the `src/components` directory
+- **Pages**: Create new pages in the `src/pages` directory
+- **Routing**: Update routes in `src/App.tsx`
 
-📝 Logs Sent
-• Vault secret injection status
-• Authentication success/failure
-• Errors and warnings
+## Building for Production
 
-Would you like help visualizing these logs in Grafana or Kibana dashboards?
-post a request
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+```
+
+The built files will be in the `dist` directory, ready to be deployed.
