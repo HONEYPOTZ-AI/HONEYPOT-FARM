@@ -42,43 +42,43 @@ const TestimonialsSection: React.FC = () => {
         console.error('Error fetching testimonials:', error);
         // Add some mock data for demonstration
         setTestimonials([
-          {
-            id: 1,
-            company_name: "CyberTech Solutions",
-            customer_name: "Sarah Johnson",
-            position: "CISO",
-            testimonial_text: "HoneyPot Farm has revolutionized our threat detection capabilities. We've identified and mitigated over 200 potential breaches in just the first month.",
-            rating: 5,
-            company_logo: "",
-            is_featured: true,
-            case_study_title: "Preventing APT Attacks",
-            case_study_summary: "How CyberTech Solutions used HoneyPot Farm to detect and prevent advanced persistent threats."
-          },
-          {
-            id: 2,
-            company_name: "SecureBank International",
-            customer_name: "Michael Chen",
-            position: "Head of Security",
-            testimonial_text: "The real-time threat intelligence and scalable infrastructure have made our security operations much more efficient and effective.",
-            rating: 5,
-            company_logo: "",
-            is_featured: true,
-            case_study_title: "Banking Security Enhancement",
-            case_study_summary: "Implementing enterprise-grade deception technology across multiple data centers."
-          },
-          {
-            id: 3,
-            company_name: "DataGuard Corp",
-            customer_name: "Emily Rodriguez",
-            position: "Security Analyst",
-            testimonial_text: "The intuitive dashboard and comprehensive reporting have simplified our threat analysis workflow significantly.",
-            rating: 4,
-            company_logo: "",
-            is_featured: false,
-            case_study_title: "Streamlined Operations",
-            case_study_summary: "Reducing incident response time by 60% with automated threat detection."
-          }
-        ]);
+        {
+          id: 1,
+          company_name: "CyberTech Solutions",
+          customer_name: "Sarah Johnson",
+          position: "CISO",
+          testimonial_text: "HoneyPot Farm has revolutionized our threat detection capabilities. We've identified and mitigated over 200 potential breaches in just the first month.",
+          rating: 5,
+          company_logo: "",
+          is_featured: true,
+          case_study_title: "Preventing APT Attacks",
+          case_study_summary: "How CyberTech Solutions used HoneyPot Farm to detect and prevent advanced persistent threats."
+        },
+        {
+          id: 2,
+          company_name: "SecureBank International",
+          customer_name: "Michael Chen",
+          position: "Head of Security",
+          testimonial_text: "The real-time threat intelligence and scalable infrastructure have made our security operations much more efficient and effective.",
+          rating: 5,
+          company_logo: "",
+          is_featured: true,
+          case_study_title: "Banking Security Enhancement",
+          case_study_summary: "Implementing enterprise-grade deception technology across multiple data centers."
+        },
+        {
+          id: 3,
+          company_name: "DataGuard Corp",
+          customer_name: "Emily Rodriguez",
+          position: "Security Analyst",
+          testimonial_text: "The intuitive dashboard and comprehensive reporting have simplified our threat analysis workflow significantly.",
+          rating: 4,
+          company_logo: "",
+          is_featured: false,
+          case_study_title: "Streamlined Operations",
+          case_study_summary: "Reducing incident response time by 60% with automated threat detection."
+        }]
+        );
       } finally {
         setLoading(false);
       }
@@ -103,12 +103,12 @@ const TestimonialsSection: React.FC = () => {
   }, [testimonials.length]);
 
   const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`}
-      />
-    ));
+    return Array.from({ length: 5 }, (_, i) =>
+    <Star
+      key={i}
+      className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`} />
+
+    );
   };
 
   if (loading) {
@@ -119,8 +119,8 @@ const TestimonialsSection: React.FC = () => {
             <div className="h-8 bg-gray-600 rounded w-1/3 mx-auto animate-pulse"></div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {[...Array(2)].map((_, i) => (
-              <Card key={i} className="bg-slate-800/50 border-cyan-500/30">
+            {[...Array(2)].map((_, i) =>
+            <Card key={i} className="bg-slate-800/50 border-cyan-500/30">
                 <CardContent className="p-8">
                   <div className="animate-pulse space-y-4">
                     <div className="h-4 bg-gray-600 rounded w-3/4"></div>
@@ -129,11 +129,11 @@ const TestimonialsSection: React.FC = () => {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            )}
           </div>
         </div>
-      </section>
-    );
+      </section>);
+
   }
 
   if (testimonials.length === 0) {
@@ -148,8 +148,8 @@ const TestimonialsSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+          className="text-center mb-16">
+
           <h3 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
             What Our Customers Say
           </h3>
@@ -161,15 +161,15 @@ const TestimonialsSection: React.FC = () => {
         {/* Featured Testimonial Carousel */}
         <div className="relative mb-16">
           <AnimatePresence mode="wait">
-            {testimonials.length > 0 && (
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
-                className="max-w-4xl mx-auto"
-              >
+            {testimonials.length > 0 &&
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-4xl mx-auto">
+
                 <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/30 backdrop-blur-sm">
                   <CardContent className="p-12 text-center">
                     <Quote className="w-12 h-12 text-cyan-400 mx-auto mb-6 opacity-50" />
@@ -195,29 +195,29 @@ const TestimonialsSection: React.FC = () => {
                   </CardContent>
                 </Card>
               </motion.div>
-            )}
+            }
           </AnimatePresence>
 
-          {testimonials.length > 1 && (
-            <div className="absolute top-1/2 left-4 right-4 flex justify-between items-center pointer-events-none">
+          {testimonials.length > 1 &&
+          <div className="absolute top-1/2 left-4 right-4 flex justify-between items-center pointer-events-none">
               <Button
-                onClick={prevTestimonial}
-                size="sm"
-                variant="outline"
-                className="pointer-events-auto bg-slate-800/50 border-cyan-500/30 hover:border-cyan-400/50 text-cyan-300"
-              >
+              onClick={prevTestimonial}
+              size="sm"
+              variant="outline"
+              className="pointer-events-auto bg-slate-800/50 border-cyan-500/30 hover:border-cyan-400/50 text-cyan-300">
+
                 <ChevronLeft className="w-4 h-4" />
               </Button>
               <Button
-                onClick={nextTestimonial}
-                size="sm"
-                variant="outline"
-                className="pointer-events-auto bg-slate-800/50 border-cyan-500/30 hover:border-cyan-400/50 text-cyan-300"
-              >
+              onClick={nextTestimonial}
+              size="sm"
+              variant="outline"
+              className="pointer-events-auto bg-slate-800/50 border-cyan-500/30 hover:border-cyan-400/50 text-cyan-300">
+
                 <ChevronRight className="w-4 h-4" />
               </Button>
             </div>
-          )}
+          }
         </div>
 
         {/* Case Studies Grid */}
@@ -225,21 +225,21 @@ const TestimonialsSection: React.FC = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+          transition={{ duration: 0.6, delay: 0.2 }}>
+
           <h4 className="text-2xl font-bold text-center mb-8 text-cyan-300">
             Case Studies & Success Stories
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.slice(0, 3).map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-              >
+            {testimonials.slice(0, 3).map((testimonial, index) =>
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}>
+
                 <Card className="bg-slate-800/30 border-slate-600/30 hover:border-cyan-500/50 transition-all duration-300 h-full">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
@@ -255,18 +255,18 @@ const TestimonialsSection: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    {testimonial.case_study_title && (
-                      <div className="mb-4">
+                    {testimonial.case_study_title &&
+                  <div className="mb-4">
                         <h6 className="font-medium text-orange-300 mb-2">
                           {testimonial.case_study_title}
                         </h6>
-                        {testimonial.case_study_summary && (
-                          <p className="text-sm text-gray-300">
+                        {testimonial.case_study_summary &&
+                    <p className="text-sm text-gray-300">
                             {testimonial.case_study_summary}
                           </p>
-                        )}
+                    }
                       </div>
-                    )}
+                  }
                     <blockquote className="text-sm text-gray-300 italic">
                       "{testimonial.testimonial_text.substring(0, 120)}..."
                     </blockquote>
@@ -278,12 +278,12 @@ const TestimonialsSection: React.FC = () => {
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
+            )}
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default TestimonialsSection;

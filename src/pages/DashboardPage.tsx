@@ -4,20 +4,21 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  Shield, 
-  Activity, 
-  AlertTriangle, 
-  Settings, 
-  LogOut, 
-  Bell, 
+import {
+  Shield,
+  Activity,
+  AlertTriangle,
+  Settings,
+  LogOut,
+  Bell,
   User,
   Menu,
-  X
-} from 'lucide-react';
+  X } from
+'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import ThreatDataVisualization from '@/components/ThreatDataVisualization';
 import ParticleBackground from '@/components/ParticleBackground';
+import Footer from '@/components/Footer';
 
 interface UserInfo {
   ID: number;
@@ -36,7 +37,7 @@ const DashboardPage: React.FC = () => {
     const fetchUserInfo = async () => {
       try {
         const { data, error } = await window.ezsite.apis.getUserInfo();
-        
+
         if (error || !data) {
           // User is not authenticated, redirect to login
           navigate('/login');
@@ -58,23 +59,23 @@ const DashboardPage: React.FC = () => {
   const handleLogout = async () => {
     try {
       const { error } = await window.ezsite.apis.logout();
-      
+
       if (error) {
         throw new Error(error);
       }
 
       toast({
         title: "Logged Out",
-        description: "You have been successfully logged out",
+        description: "You have been successfully logged out"
       });
-      
+
       navigate('/');
     } catch (error) {
       console.error('Logout error:', error);
       toast({
         title: "Logout Error",
         description: "Failed to log out properly",
-        variant: "destructive",
+        variant: "destructive"
       });
     }
   };
@@ -85,10 +86,10 @@ const DashboardPage: React.FC = () => {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full"
-        />
-      </div>
-    );
+          className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full" />
+
+      </div>);
+
   }
 
   return (
@@ -104,8 +105,8 @@ const DashboardPage: React.FC = () => {
                 variant="ghost"
                 size="sm"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden text-cyan-300 hover:text-cyan-200"
-              >
+                className="lg:hidden text-cyan-300 hover:text-cyan-200">
+
                 {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </Button>
               
@@ -128,8 +129,8 @@ const DashboardPage: React.FC = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-cyan-300 hover:text-cyan-200"
-              >
+                className="text-cyan-300 hover:text-cyan-200">
+
                 <Bell className="w-5 h-5" />
               </Button>
 
@@ -142,8 +143,8 @@ const DashboardPage: React.FC = () => {
                 onClick={handleLogout}
                 variant="ghost"
                 size="sm"
-                className="text-red-400 hover:text-red-300"
-              >
+                className="text-red-400 hover:text-red-300">
+
                 <LogOut className="w-4 h-4" />
               </Button>
             </div>
@@ -156,35 +157,35 @@ const DashboardPage: React.FC = () => {
         <motion.aside
           initial={false}
           animate={{ x: sidebarOpen ? 0 : '-100%' }}
-          className="fixed lg:relative lg:translate-x-0 z-30 w-64 h-full bg-slate-900/90 backdrop-blur-md border-r border-cyan-500/30 lg:block"
-        >
+          className="fixed lg:relative lg:translate-x-0 z-30 w-64 h-full bg-slate-900/90 backdrop-blur-md border-r border-cyan-500/30 lg:block">
+
           <div className="p-6 space-y-6">
             <nav className="space-y-2">
               <Button
                 variant="ghost"
-                className="w-full justify-start text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10"
-              >
+                className="w-full justify-start text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10">
+
                 <Activity className="w-4 h-4 mr-3" />
                 Dashboard
               </Button>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-gray-400 hover:text-cyan-200 hover:bg-cyan-500/10"
-              >
+                className="w-full justify-start text-gray-400 hover:text-cyan-200 hover:bg-cyan-500/10">
+
                 <AlertTriangle className="w-4 h-4 mr-3" />
                 Threat Analysis
               </Button>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-gray-400 hover:text-cyan-200 hover:bg-cyan-500/10"
-              >
+                className="w-full justify-start text-gray-400 hover:text-cyan-200 hover:bg-cyan-500/10">
+
                 <Shield className="w-4 h-4 mr-3" />
                 Honeypots
               </Button>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-gray-400 hover:text-cyan-200 hover:bg-cyan-500/10"
-              >
+                className="w-full justify-start text-gray-400 hover:text-cyan-200 hover:bg-cyan-500/10">
+
                 <Settings className="w-4 h-4 mr-3" />
                 Settings
               </Button>
@@ -205,20 +206,20 @@ const DashboardPage: React.FC = () => {
         </motion.aside>
 
         {/* Overlay for mobile sidebar */}
-        {sidebarOpen && (
-          <div
-            className="fixed inset-0 bg-black/50 z-20 lg:hidden"
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
+        {sidebarOpen &&
+        <div
+          className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+          onClick={() => setSidebarOpen(false)} />
+
+        }
 
         {/* Main Content */}
         <main className="flex-1 p-6 lg:p-8 overflow-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+            transition={{ duration: 0.5 }}>
+
             <div className="max-w-7xl mx-auto">
               <div className="mb-8">
                 <h1 className="text-3xl font-bold text-cyan-300 mb-2">
@@ -237,8 +238,8 @@ const DashboardPage: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-8"
-              >
+                className="mt-8">
+
                 <Card className="bg-slate-800/50 border-cyan-500/30">
                   <CardHeader>
                     <CardTitle className="text-cyan-300">Quick Actions</CardTitle>
@@ -247,22 +248,22 @@ const DashboardPage: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <Button
                         variant="outline"
-                        className="border-cyan-500/30 text-cyan-300 hover:border-cyan-400/50 hover:bg-cyan-500/10"
-                      >
+                        className="border-cyan-500/30 text-cyan-300 hover:border-cyan-400/50 hover:bg-cyan-500/10">
+
                         <Shield className="w-4 h-4 mr-2" />
                         Deploy Honeypot
                       </Button>
                       <Button
                         variant="outline"
-                        className="border-orange-500/30 text-orange-300 hover:border-orange-400/50 hover:bg-orange-500/10"
-                      >
+                        className="border-orange-500/30 text-orange-300 hover:border-orange-400/50 hover:bg-orange-500/10">
+
                         <AlertTriangle className="w-4 h-4 mr-2" />
                         View Alerts
                       </Button>
                       <Button
                         variant="outline"
-                        className="border-blue-500/30 text-blue-300 hover:border-blue-400/50 hover:bg-blue-500/10"
-                      >
+                        className="border-blue-500/30 text-blue-300 hover:border-blue-400/50 hover:bg-blue-500/10">
+
                         <Activity className="w-4 h-4 mr-2" />
                         Generate Report
                       </Button>
@@ -272,10 +273,13 @@ const DashboardPage: React.FC = () => {
               </motion.div>
             </div>
           </motion.div>
+          
+          {/* Footer */}
+          <Footer />
         </main>
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default DashboardPage;

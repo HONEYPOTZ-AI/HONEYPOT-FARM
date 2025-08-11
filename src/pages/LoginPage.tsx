@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { Shield, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import ParticleBackground from '@/components/ParticleBackground';
+import Footer from '@/components/Footer';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -18,18 +19,18 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email || !password) {
       toast({
         title: "Validation Error",
         description: "Please fill in all fields",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
 
     setIsLoading(true);
-    
+
     try {
       const { error } = await window.ezsite.apis.login({
         email: email,
@@ -42,16 +43,16 @@ const LoginPage: React.FC = () => {
 
       toast({
         title: "Login Successful",
-        description: "Welcome back to HoneyPot Farm!",
+        description: "Welcome back to HoneyPot Farm!"
       });
 
       navigate('/dashboard');
     } catch (error) {
       console.error('Login error:', error);
       toast({
-        title: "Login Failed", 
+        title: "Login Failed",
         description: error instanceof Error ? error.message : "Invalid credentials",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsLoading(false);
@@ -66,8 +67,8 @@ const LoginPage: React.FC = () => {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
-      >
+        className="w-full max-w-md relative z-10">
+
         <Card className="bg-slate-800/80 border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-500/10">
           <CardHeader className="text-center pb-8">
             <div className="flex justify-center mb-4">
@@ -94,8 +95,8 @@ const LoginPage: React.FC = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     className="pl-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                    disabled={isLoading}
-                  />
+                    disabled={isLoading} />
+
                 </div>
               </div>
 
@@ -110,23 +111,23 @@ const LoginPage: React.FC = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     className="pl-10 pr-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                    disabled={isLoading}
-                  />
+                    disabled={isLoading} />
+
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors"
-                  >
+                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors">
+
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
 
               <div className="flex justify-end">
-                <Link 
-                  to="/forgot-password" 
-                  className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
-                >
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+
                   Forgot password?
                 </Link>
               </div>
@@ -134,27 +135,27 @@ const LoginPage: React.FC = () => {
               <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-3"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                  />
-                ) : (
-                  "Sign In"
-                )}
+                disabled={isLoading}>
+
+                {isLoading ?
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  className="w-5 h-5 border-2 border-white border-t-transparent rounded-full" /> :
+
+
+                "Sign In"
+                }
               </Button>
             </form>
 
             <div className="text-center mt-8 pt-6 border-t border-slate-700">
               <p className="text-gray-400">
                 Don't have an account?{' '}
-                <Link 
-                  to="/register" 
-                  className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
-                >
+                <Link
+                  to="/register"
+                  className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+
                   Sign up
                 </Link>
               </p>
@@ -163,16 +164,19 @@ const LoginPage: React.FC = () => {
         </Card>
 
         <div className="text-center mt-6">
-          <Link 
-            to="/" 
-            className="text-sm text-gray-400 hover:text-cyan-300 transition-colors"
-          >
+          <Link
+            to="/"
+            className="text-sm text-gray-400 hover:text-cyan-300 transition-colors">
+
             ← Back to Home
           </Link>
         </div>
       </motion.div>
-    </div>
-  );
+      
+      {/* Footer */}
+      <Footer />
+    </div>);
+
 };
 
 export default LoginPage;

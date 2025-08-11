@@ -13,40 +13,40 @@ const AdminPage: React.FC = () => {
     setLoading(true);
     try {
       const testimonials = [
-        {
-          company_name: "CyberTech Solutions",
-          customer_name: "Sarah Johnson", 
-          position: "Chief Information Security Officer",
-          testimonial_text: "HoneyPot Farm has revolutionized our threat detection capabilities. We've identified and mitigated over 200 potential breaches in just the first month.",
-          rating: 5,
-          company_logo: "",
-          is_featured: true,
-          case_study_title: "Preventing Advanced Persistent Threats",
-          case_study_summary: "How CyberTech Solutions deployed 500+ honeypots to detect APT attacks, reducing breach attempts by 90%."
-        },
-        {
-          company_name: "SecureBank International",
-          customer_name: "Michael Chen",
-          position: "Head of Cybersecurity", 
-          testimonial_text: "The scalable infrastructure and multi-cloud deployment capabilities have streamlined our security operations across 15 data centers.",
-          rating: 5,
-          company_logo: "",
-          is_featured: true,
-          case_study_title: "Banking Security at Scale",
-          case_study_summary: "Enterprise-grade deception technology across multiple regions, reducing incident response time by 75%."
-        },
-        {
-          company_name: "DataGuard Corporation",
-          customer_name: "Emily Rodriguez",
-          position: "Senior Security Analyst",
-          testimonial_text: "The intuitive dashboard and automated reporting have transformed how we analyze and respond to security incidents.",
-          rating: 4,
-          company_logo: "",
-          is_featured: false,
-          case_study_title: "Operational Efficiency Boost", 
-          case_study_summary: "Reducing manual workload by 60% through intelligent automation and threat visualization."
-        }
-      ];
+      {
+        company_name: "CyberTech Solutions",
+        customer_name: "Sarah Johnson",
+        position: "Chief Information Security Officer",
+        testimonial_text: "HoneyPot Farm has revolutionized our threat detection capabilities. We've identified and mitigated over 200 potential breaches in just the first month.",
+        rating: 5,
+        company_logo: "",
+        is_featured: true,
+        case_study_title: "Preventing Advanced Persistent Threats",
+        case_study_summary: "How CyberTech Solutions deployed 500+ honeypots to detect APT attacks, reducing breach attempts by 90%."
+      },
+      {
+        company_name: "SecureBank International",
+        customer_name: "Michael Chen",
+        position: "Head of Cybersecurity",
+        testimonial_text: "The scalable infrastructure and multi-cloud deployment capabilities have streamlined our security operations across 15 data centers.",
+        rating: 5,
+        company_logo: "",
+        is_featured: true,
+        case_study_title: "Banking Security at Scale",
+        case_study_summary: "Enterprise-grade deception technology across multiple regions, reducing incident response time by 75%."
+      },
+      {
+        company_name: "DataGuard Corporation",
+        customer_name: "Emily Rodriguez",
+        position: "Senior Security Analyst",
+        testimonial_text: "The intuitive dashboard and automated reporting have transformed how we analyze and respond to security incidents.",
+        rating: 4,
+        company_logo: "",
+        is_featured: false,
+        case_study_title: "Operational Efficiency Boost",
+        case_study_summary: "Reducing manual workload by 60% through intelligent automation and threat visualization."
+      }];
+
 
       for (const testimonial of testimonials) {
         const { error } = await window.ezsite.apis.tableCreate(33676, testimonial);
@@ -55,13 +55,13 @@ const AdminPage: React.FC = () => {
 
       toast({
         title: "Success",
-        description: "Sample testimonials added successfully",
+        description: "Sample testimonials added successfully"
       });
     } catch (error) {
       toast({
         title: "Error",
         description: `Failed to add testimonials: ${error instanceof Error ? error.message : 'Unknown error'}`,
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setLoading(false);
@@ -95,13 +95,13 @@ const AdminPage: React.FC = () => {
 
       toast({
         title: "Success",
-        description: "Sample threat data added successfully",
+        description: "Sample threat data added successfully"
       });
     } catch (error) {
       toast({
         title: "Error",
         description: `Failed to add threat data: ${error instanceof Error ? error.message : 'Unknown error'}`,
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setLoading(false);
@@ -116,8 +116,8 @@ const AdminPage: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+          transition={{ duration: 0.5 }}>
+
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
               <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl flex items-center justify-center">
@@ -145,17 +145,17 @@ const AdminPage: React.FC = () => {
                 <Button
                   onClick={addSampleTestimonials}
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
-                >
-                  {loading ? (
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
-                    />
-                  ) : (
-                    <Database className="w-4 h-4 mr-2" />
-                  )}
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
+
+                  {loading ?
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2" /> :
+
+
+                  <Database className="w-4 h-4 mr-2" />
+                  }
                   Add Sample Testimonials
                 </Button>
               </CardContent>
@@ -175,17 +175,17 @@ const AdminPage: React.FC = () => {
                 <Button
                   onClick={addSampleThreats}
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600"
-                >
-                  {loading ? (
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
-                    />
-                  ) : (
-                    <Database className="w-4 h-4 mr-2" />
-                  )}
+                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600">
+
+                  {loading ?
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2" /> :
+
+
+                  <Database className="w-4 h-4 mr-2" />
+                  }
                   Add Sample Threats
                 </Button>
               </CardContent>
@@ -193,8 +193,8 @@ const AdminPage: React.FC = () => {
           </div>
         </motion.div>
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default AdminPage;

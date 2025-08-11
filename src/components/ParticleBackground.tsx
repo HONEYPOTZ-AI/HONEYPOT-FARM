@@ -29,8 +29,8 @@ const ParticleBackground: React.FC = () => {
 
     const createParticles = () => {
       const particles: Particle[] = [];
-      const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
-      
+      const particleCount = Math.floor(canvas.width * canvas.height / 15000);
+
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -65,7 +65,7 @@ const ParticleBackground: React.FC = () => {
         ctx.fill();
 
         // Draw connections to nearby particles
-        particlesRef.current.slice(index + 1).forEach(otherParticle => {
+        particlesRef.current.slice(index + 1).forEach((otherParticle) => {
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
@@ -107,9 +107,9 @@ const ParticleBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: 'transparent' }}
-    />
-  );
+      style={{ background: 'transparent' }} />);
+
+
 };
 
 export default ParticleBackground;

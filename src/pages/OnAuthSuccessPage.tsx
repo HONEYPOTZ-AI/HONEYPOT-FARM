@@ -33,8 +33,8 @@ const OnAuthSuccessPage: React.FC = () => {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
-      >
+        className="w-full max-w-md relative z-10">
+
         <Card className="bg-slate-800/80 border-green-500/30 backdrop-blur-xl shadow-2xl shadow-green-500/10">
           <CardHeader className="text-center pb-8">
             <div className="flex justify-center mb-4">
@@ -42,8 +42,8 @@ const OnAuthSuccessPage: React.FC = () => {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center"
-              >
+                className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center">
+
                 <CheckCircle className="w-8 h-8 text-white" />
               </motion.div>
             </div>
@@ -59,8 +59,8 @@ const OnAuthSuccessPage: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
+              transition={{ duration: 0.5, delay: 0.4 }}>
+
               <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-cyan-400" />
               </div>
@@ -77,8 +77,8 @@ const OnAuthSuccessPage: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="bg-slate-700/30 p-4 rounded-lg border border-slate-600/30"
-            >
+              className="bg-slate-700/30 p-4 rounded-lg border border-slate-600/30">
+
               <div className="flex items-center justify-center gap-2 text-sm text-gray-400 mb-2">
                 <Clock className="w-4 h-4" />
                 Redirecting in {countdown} seconds...
@@ -87,16 +87,16 @@ const OnAuthSuccessPage: React.FC = () => {
                 <motion.div
                   className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full"
                   initial={{ width: '100%' }}
-                  animate={{ width: `${(countdown / 5) * 100}%` }}
-                  transition={{ duration: 1, ease: 'linear' }}
-                />
+                  animate={{ width: `${countdown / 5 * 100}%` }}
+                  transition={{ duration: 1, ease: 'linear' }} />
+
               </div>
             </motion.div>
 
             <Button
               onClick={() => navigate('/login')}
-              className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-3"
-            >
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-3">
+
               Continue to Sign In
             </Button>
 
@@ -106,8 +106,8 @@ const OnAuthSuccessPage: React.FC = () => {
           </CardContent>
         </Card>
       </motion.div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default OnAuthSuccessPage;

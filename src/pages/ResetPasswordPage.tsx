@@ -28,7 +28,7 @@ const ResetPasswordPage: React.FC = () => {
       toast({
         title: "Invalid Reset Link",
         description: "This password reset link is invalid or expired",
-        variant: "destructive",
+        variant: "destructive"
       });
       navigate('/login');
       return;
@@ -37,7 +37,7 @@ const ResetPasswordPage: React.FC = () => {
   }, [searchParams, navigate]);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const validateForm = () => {
@@ -45,16 +45,16 @@ const ResetPasswordPage: React.FC = () => {
       toast({
         title: "Validation Error",
         description: "Password must be at least 6 characters long",
-        variant: "destructive",
+        variant: "destructive"
       });
       return false;
     }
 
     if (formData.password !== formData.confirmPassword) {
       toast({
-        title: "Validation Error", 
+        title: "Validation Error",
         description: "Passwords do not match",
-        variant: "destructive",
+        variant: "destructive"
       });
       return false;
     }
@@ -64,11 +64,11 @@ const ResetPasswordPage: React.FC = () => {
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm() || !token) return;
 
     setIsLoading(true);
-    
+
     try {
       const { error } = await window.ezsite.apis.resetPassword({
         token: token,
@@ -82,7 +82,7 @@ const ResetPasswordPage: React.FC = () => {
       setResetSuccess(true);
       toast({
         title: "Password Reset Successful",
-        description: "Your password has been updated successfully",
+        description: "Your password has been updated successfully"
       });
 
       // Redirect to login after 3 seconds
@@ -94,7 +94,7 @@ const ResetPasswordPage: React.FC = () => {
       toast({
         title: "Reset Failed",
         description: error instanceof Error ? error.message : "Failed to reset password",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsLoading(false);
@@ -113,8 +113,8 @@ const ResetPasswordPage: React.FC = () => {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
-      >
+        className="w-full max-w-md relative z-10">
+
         <Card className="bg-slate-800/80 border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-500/10">
           <CardHeader className="text-center pb-8">
             <div className="flex justify-center mb-4">
@@ -126,16 +126,16 @@ const ResetPasswordPage: React.FC = () => {
               Set New Password
             </CardTitle>
             <p className="text-gray-400 mt-2">
-              {resetSuccess 
-                ? "Password updated successfully"
-                : "Enter your new password below"
+              {resetSuccess ?
+              "Password updated successfully" :
+              "Enter your new password below"
               }
             </p>
           </CardHeader>
           
           <CardContent>
-            {resetSuccess ? (
-              <div className="text-center space-y-6">
+            {resetSuccess ?
+            <div className="text-center space-y-6">
                 <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle className="w-8 h-8 text-green-400" />
                 </div>
@@ -149,32 +149,32 @@ const ResetPasswordPage: React.FC = () => {
                   </p>
                 </div>
                 <Button
-                  onClick={() => navigate('/login')}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
-                >
+                onClick={() => navigate('/login')}
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
+
                   Go to Sign In
                 </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleResetPassword} className="space-y-6">
+              </div> :
+
+            <form onSubmit={handleResetPassword} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="password" className="text-cyan-300">New Password</Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                     <Input
-                      id="password"
-                      type={showPassword ? "text" : "password"}
-                      value={formData.password}
-                      onChange={(e) => handleInputChange('password', e.target.value)}
-                      placeholder="Enter your new password"
-                      className="pl-10 pr-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                      disabled={isLoading}
-                    />
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={formData.password}
+                    onChange={(e) => handleInputChange('password', e.target.value)}
+                    placeholder="Enter your new password"
+                    className="pl-10 pr-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
+                    disabled={isLoading} />
+
                     <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors"
-                    >
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors">
+
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
@@ -185,46 +185,46 @@ const ResetPasswordPage: React.FC = () => {
                   <div className="relative">
                     <Lock className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                     <Input
-                      id="confirmPassword"
-                      type={showConfirmPassword ? "text" : "password"}
-                      value={formData.confirmPassword}
-                      onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                      placeholder="Confirm your new password"
-                      className="pl-10 pr-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                      disabled={isLoading}
-                    />
+                    id="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    value={formData.confirmPassword}
+                    onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                    placeholder="Confirm your new password"
+                    className="pl-10 pr-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
+                    disabled={isLoading} />
+
                     <button
-                      type="button"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors"
-                    >
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors">
+
                       {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
                 </div>
 
                 <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-3"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                    />
-                  ) : (
-                    "Update Password"
-                  )}
+                type="submit"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-3"
+                disabled={isLoading}>
+
+                  {isLoading ?
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  className="w-5 h-5 border-2 border-white border-t-transparent rounded-full" /> :
+
+
+                "Update Password"
+                }
                 </Button>
               </form>
-            )}
+            }
           </CardContent>
         </Card>
       </motion.div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default ResetPasswordPage;

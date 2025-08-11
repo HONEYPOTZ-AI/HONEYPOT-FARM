@@ -22,7 +22,7 @@ const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const validateForm = () => {
@@ -30,16 +30,16 @@ const RegisterPage: React.FC = () => {
       toast({
         title: "Validation Error",
         description: "Please enter your name",
-        variant: "destructive",
+        variant: "destructive"
       });
       return false;
     }
 
     if (!formData.email.trim()) {
       toast({
-        title: "Validation Error", 
+        title: "Validation Error",
         description: "Please enter your email address",
-        variant: "destructive",
+        variant: "destructive"
       });
       return false;
     }
@@ -48,7 +48,7 @@ const RegisterPage: React.FC = () => {
       toast({
         title: "Validation Error",
         description: "Please enter a valid email address",
-        variant: "destructive",
+        variant: "destructive"
       });
       return false;
     }
@@ -57,7 +57,7 @@ const RegisterPage: React.FC = () => {
       toast({
         title: "Validation Error",
         description: "Password must be at least 6 characters long",
-        variant: "destructive",
+        variant: "destructive"
       });
       return false;
     }
@@ -66,7 +66,7 @@ const RegisterPage: React.FC = () => {
       toast({
         title: "Validation Error",
         description: "Passwords do not match",
-        variant: "destructive",
+        variant: "destructive"
       });
       return false;
     }
@@ -76,11 +76,11 @@ const RegisterPage: React.FC = () => {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsLoading(true);
-    
+
     try {
       const { error } = await window.ezsite.apis.register({
         email: formData.email,
@@ -93,7 +93,7 @@ const RegisterPage: React.FC = () => {
 
       toast({
         title: "Registration Successful",
-        description: "Please check your email to verify your account",
+        description: "Please check your email to verify your account"
       });
 
       navigate('/login');
@@ -102,7 +102,7 @@ const RegisterPage: React.FC = () => {
       toast({
         title: "Registration Failed",
         description: error instanceof Error ? error.message : "Failed to create account",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsLoading(false);
@@ -117,8 +117,8 @@ const RegisterPage: React.FC = () => {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
-      >
+        className="w-full max-w-md relative z-10">
+
         <Card className="bg-slate-800/80 border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-500/10">
           <CardHeader className="text-center pb-8">
             <div className="flex justify-center mb-4">
@@ -145,8 +145,8 @@ const RegisterPage: React.FC = () => {
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     placeholder="Enter your full name"
                     className="pl-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                    disabled={isLoading}
-                  />
+                    disabled={isLoading} />
+
                 </div>
               </div>
 
@@ -161,8 +161,8 @@ const RegisterPage: React.FC = () => {
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="Enter your email"
                     className="pl-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                    disabled={isLoading}
-                  />
+                    disabled={isLoading} />
+
                 </div>
               </div>
 
@@ -177,13 +177,13 @@ const RegisterPage: React.FC = () => {
                     onChange={(e) => handleInputChange('password', e.target.value)}
                     placeholder="Create a password"
                     className="pl-10 pr-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                    disabled={isLoading}
-                  />
+                    disabled={isLoading} />
+
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors"
-                  >
+                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors">
+
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
@@ -200,13 +200,13 @@ const RegisterPage: React.FC = () => {
                     onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                     placeholder="Confirm your password"
                     className="pl-10 pr-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                    disabled={isLoading}
-                  />
+                    disabled={isLoading} />
+
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors"
-                  >
+                    className="absolute right-3 top-3 text-gray-400 hover:text-cyan-300 transition-colors">
+
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
@@ -215,27 +215,27 @@ const RegisterPage: React.FC = () => {
               <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium py-3"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                  />
-                ) : (
-                  "Create Account"
-                )}
+                disabled={isLoading}>
+
+                {isLoading ?
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  className="w-5 h-5 border-2 border-white border-t-transparent rounded-full" /> :
+
+
+                "Create Account"
+                }
               </Button>
             </form>
 
             <div className="text-center mt-8 pt-6 border-t border-slate-700">
               <p className="text-gray-400">
                 Already have an account?{' '}
-                <Link 
-                  to="/login" 
-                  className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
-                >
+                <Link
+                  to="/login"
+                  className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+
                   Sign in
                 </Link>
               </p>
@@ -244,16 +244,16 @@ const RegisterPage: React.FC = () => {
         </Card>
 
         <div className="text-center mt-6">
-          <Link 
-            to="/" 
-            className="text-sm text-gray-400 hover:text-cyan-300 transition-colors"
-          >
+          <Link
+            to="/"
+            className="text-sm text-gray-400 hover:text-cyan-300 transition-colors">
+
             ← Back to Home
           </Link>
         </div>
       </motion.div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default RegisterPage;

@@ -60,7 +60,7 @@ const ThreatDataVisualization: React.FC = () => {
         high: threatList.filter((t: ThreatDetection) => t.severity_level === 'High').length,
         medium: threatList.filter((t: ThreatDetection) => t.severity_level === 'Medium').length,
         low: threatList.filter((t: ThreatDetection) => t.severity_level === 'Low').length,
-        active: threatList.filter((t: ThreatDetection) => t.status === 'Active').length,
+        active: threatList.filter((t: ThreatDetection) => t.status === 'Active').length
       };
       setStats(newStats);
     } catch (error) {
@@ -78,28 +78,28 @@ const ThreatDataVisualization: React.FC = () => {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'Critical': return 'bg-red-500';
-      case 'High': return 'bg-orange-500';
-      case 'Medium': return 'bg-yellow-500';
-      case 'Low': return 'bg-blue-500';
-      default: return 'bg-gray-500';
+      case 'Critical':return 'bg-red-500';
+      case 'High':return 'bg-orange-500';
+      case 'Medium':return 'bg-yellow-500';
+      case 'Low':return 'bg-blue-500';
+      default:return 'bg-gray-500';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Active': return 'text-red-400 bg-red-500/10';
-      case 'Investigating': return 'text-yellow-400 bg-yellow-500/10';
-      case 'Mitigated': return 'text-green-400 bg-green-500/10';
-      default: return 'text-gray-400 bg-gray-500/10';
+      case 'Active':return 'text-red-400 bg-red-500/10';
+      case 'Investigating':return 'text-yellow-400 bg-yellow-500/10';
+      case 'Mitigated':return 'text-green-400 bg-green-500/10';
+      default:return 'text-gray-400 bg-gray-500/10';
     }
   };
 
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {[...Array(4)].map((_, i) => (
-          <Card key={i} className="bg-slate-800/50 border-cyan-500/30">
+        {[...Array(4)].map((_, i) =>
+        <Card key={i} className="bg-slate-800/50 border-cyan-500/30">
             <CardContent className="p-6">
               <div className="animate-pulse">
                 <div className="h-4 bg-gray-600 rounded w-3/4 mb-2"></div>
@@ -107,9 +107,9 @@ const ThreatDataVisualization: React.FC = () => {
               </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
-    );
+        )}
+      </div>);
+
   }
 
   return (
@@ -119,8 +119,8 @@ const ThreatDataVisualization: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+          transition={{ duration: 0.5 }}>
+
           <Card className="bg-slate-800/50 border-cyan-500/30">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
@@ -137,8 +137,8 @@ const ThreatDataVisualization: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
+          transition={{ duration: 0.5, delay: 0.1 }}>
+
           <Card className="bg-slate-800/50 border-red-500/30">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
@@ -155,8 +155,8 @@ const ThreatDataVisualization: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+          transition={{ duration: 0.5, delay: 0.2 }}>
+
           <Card className="bg-slate-800/50 border-orange-500/30">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
@@ -173,8 +173,8 @@ const ThreatDataVisualization: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
+          transition={{ duration: 0.5, delay: 0.3 }}>
+
           <Card className="bg-slate-800/50 border-yellow-500/30">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
@@ -191,8 +191,8 @@ const ThreatDataVisualization: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+          transition={{ duration: 0.5, delay: 0.4 }}>
+
           <Card className="bg-slate-800/50 border-green-500/30">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
@@ -218,25 +218,25 @@ const ThreatDataVisualization: React.FC = () => {
         <CardContent>
           <div className="space-y-4">
             <AnimatePresence>
-              {threats.length === 0 ? (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="text-center py-8 text-gray-400"
-                >
+              {threats.length === 0 ?
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-center py-8 text-gray-400">
+
                   No threats detected. Your honeypots are monitoring for activity.
-                </motion.div>
-              ) : (
-                threats.slice(0, 5).map((threat, index) => (
-                  <motion.div
-                    key={threat.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="bg-slate-700/30 p-4 rounded-lg border border-slate-600/30 hover:border-cyan-500/50 transition-all duration-300"
-                  >
+                </motion.div> :
+
+              threats.slice(0, 5).map((threat, index) =>
+              <motion.div
+                key={threat.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="bg-slate-700/30 p-4 rounded-lg border border-slate-600/30 hover:border-cyan-500/50 transition-all duration-300">
+
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
@@ -259,20 +259,20 @@ const ThreatDataVisualization: React.FC = () => {
                             {new Date(threat.detection_time).toLocaleString()}
                           </div>
                         </div>
-                        {threat.details && (
-                          <p className="text-sm text-gray-300 mt-2 line-clamp-2">{threat.details}</p>
-                        )}
+                        {threat.details &&
+                    <p className="text-sm text-gray-300 mt-2 line-clamp-2">{threat.details}</p>
+                    }
                       </div>
                     </div>
                   </motion.div>
-                ))
-              )}
+              )
+              }
             </AnimatePresence>
           </div>
         </CardContent>
       </Card>
-    </div>
-  );
+    </div>);
+
 };
 
 export default ThreatDataVisualization;

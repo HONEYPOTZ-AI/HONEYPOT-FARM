@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ParticleBackground from '@/components/ParticleBackground';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import Footer from '@/components/Footer';
 
 const HomePage = () => {
   return (
@@ -45,39 +46,39 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl md:text-8xl font-bold mb-6"
-          >
+            className="text-6xl md:text-8xl font-bold mb-6">
+
             <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent">
               HONEYPOT FARM
             </span>
           </motion.h1>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-3xl font-semibold text-cyan-300 mb-8 tracking-wide"
-          >
+            className="text-2xl md:text-3xl font-semibold text-cyan-300 mb-8 tracking-wide">
+
             CYBERSECURITY SAAS PLATFORM
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-          >
+            className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+
             Deploy thousands of virtual honeypots across cloud and on-premises environments 
             with advanced threat detection and real-time logging capabilities.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+            className="flex flex-col sm:flex-row gap-4 justify-center">
+
             <Link to="/register">
               <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-lg px-8 py-4">
                 Start Free Trial
@@ -95,13 +96,13 @@ const HomePage = () => {
       {/* Architecture Section */}
       <section id="architecture" className="py-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent"
-          >
+            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
+
             Platform Architecture
           </motion.h3>
           
@@ -131,8 +132,8 @@ const HomePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
+                whileHover={{ scale: 1.05 }}>
+
                 <Card className="bg-slate-800/50 border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
@@ -151,8 +152,8 @@ const HomePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ scale: 1.05 }}
-              >
+                whileHover={{ scale: 1.05 }}>
+
                 <Card className="bg-slate-800/50 border-orange-500/30 hover:border-orange-400/50 transition-all duration-300">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-orange-400 to-amber-500 rounded-xl flex items-center justify-center">
@@ -277,31 +278,31 @@ const HomePage = () => {
       {/* CTA Section */}
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent"
-          >
+            className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
+
             Ready to Deploy Your Honeypot Farm?
           </motion.h3>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-300 mb-8"
-          >
+            className="text-xl text-gray-300 mb-8">
+
             Start protecting your infrastructure with enterprise-grade deception technology
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+            className="flex flex-col sm:flex-row gap-4 justify-center">
+
             <Link to="/register">
               <Button size="lg" className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-lg px-8 py-4">
                 Start Free Trial
@@ -317,19 +318,7 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 py-12 px-6 border-t border-cyan-500/30">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-            HONEYPOT FARM
-          </div>
-          <p className="text-gray-400 mb-6">Advanced Cybersecurity SaaS Platform</p>
-          <div className="flex justify-center space-x-8 text-sm text-gray-400">
-            <a href="#" className="hover:text-cyan-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-cyan-300 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-cyan-300 transition-colors">Support</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>);
 
 };

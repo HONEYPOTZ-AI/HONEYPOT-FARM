@@ -16,12 +16,12 @@ const ForgotPasswordPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email) {
       toast({
         title: "Validation Error",
         description: "Please enter your email address",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -30,13 +30,13 @@ const ForgotPasswordPage: React.FC = () => {
       toast({
         title: "Validation Error",
         description: "Please enter a valid email address",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
 
     setIsLoading(true);
-    
+
     try {
       const { error } = await window.ezsite.apis.sendResetPwdEmail({ email });
 
@@ -47,14 +47,14 @@ const ForgotPasswordPage: React.FC = () => {
       setEmailSent(true);
       toast({
         title: "Email Sent",
-        description: "Check your email for password reset instructions",
+        description: "Check your email for password reset instructions"
       });
     } catch (error) {
       console.error('Reset password error:', error);
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to send reset email",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsLoading(false);
@@ -69,8 +69,8 @@ const ForgotPasswordPage: React.FC = () => {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
-      >
+        className="w-full max-w-md relative z-10">
+
         <Card className="bg-slate-800/80 border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-500/10">
           <CardHeader className="text-center pb-8">
             <div className="flex justify-center mb-4">
@@ -82,16 +82,16 @@ const ForgotPasswordPage: React.FC = () => {
               Reset Password
             </CardTitle>
             <p className="text-gray-400 mt-2">
-              {emailSent 
-                ? "Check your email for reset instructions"
-                : "Enter your email to reset your password"
+              {emailSent ?
+              "Check your email for reset instructions" :
+              "Enter your email to reset your password"
               }
             </p>
           </CardHeader>
           
           <CardContent>
-            {emailSent ? (
-              <div className="text-center space-y-6">
+            {emailSent ?
+            <div className="text-center space-y-6">
                 <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto">
                   <Mail className="w-8 h-8 text-green-400" />
                 </div>
@@ -106,85 +106,85 @@ const ForgotPasswordPage: React.FC = () => {
                 </div>
                 <div className="space-y-3">
                   <Button
-                    onClick={() => {
-                      setEmailSent(false);
-                      setEmail('');
-                    }}
-                    variant="outline"
-                    className="w-full border-cyan-500/30 text-cyan-300 hover:border-cyan-400/50"
-                  >
+                  onClick={() => {
+                    setEmailSent(false);
+                    setEmail('');
+                  }}
+                  variant="outline"
+                  className="w-full border-cyan-500/30 text-cyan-300 hover:border-cyan-400/50">
+
                     Send Another Email
                   </Button>
                   <Link to="/login">
                     <Button
-                      variant="ghost"
-                      className="w-full text-gray-400 hover:text-cyan-300"
-                    >
+                    variant="ghost"
+                    className="w-full text-gray-400 hover:text-cyan-300">
+
                       <ArrowLeft className="w-4 h-4 mr-2" />
                       Back to Sign In
                     </Button>
                   </Link>
                 </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              </div> :
+
+            <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-cyan-300">Email Address</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                     <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email address"
-                      className="pl-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
-                      disabled={isLoading}
-                    />
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    className="pl-10 bg-slate-700/50 border-slate-600 focus:border-cyan-400 text-white"
+                    disabled={isLoading} />
+
                   </div>
                 </div>
 
                 <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-3"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                    />
-                  ) : (
-                    "Send Reset Email"
-                  )}
+                type="submit"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-3"
+                disabled={isLoading}>
+
+                  {isLoading ?
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  className="w-5 h-5 border-2 border-white border-t-transparent rounded-full" /> :
+
+
+                "Send Reset Email"
+                }
                 </Button>
 
                 <div className="text-center">
-                  <Link 
-                    to="/login" 
-                    className="text-sm text-gray-400 hover:text-cyan-300 transition-colors inline-flex items-center"
-                  >
+                  <Link
+                  to="/login"
+                  className="text-sm text-gray-400 hover:text-cyan-300 transition-colors inline-flex items-center">
+
                     <ArrowLeft className="w-4 h-4 mr-1" />
                     Back to Sign In
                   </Link>
                 </div>
               </form>
-            )}
+            }
           </CardContent>
         </Card>
 
         <div className="text-center mt-6">
-          <Link 
-            to="/" 
-            className="text-sm text-gray-400 hover:text-cyan-300 transition-colors"
-          >
+          <Link
+            to="/"
+            className="text-sm text-gray-400 hover:text-cyan-300 transition-colors">
+
             ← Back to Home
           </Link>
         </div>
       </motion.div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default ForgotPasswordPage;

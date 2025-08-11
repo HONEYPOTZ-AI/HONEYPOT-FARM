@@ -14,7 +14,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     const checkAuth = async () => {
       try {
         const { data, error } = await window.ezsite.apis.getUserInfo();
-        
+
         if (error || !data) {
           setIsAuthenticated(false);
           navigate('/login');
@@ -38,10 +38,10 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full"
-        />
-      </div>
-    );
+          className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full" />
+
+      </div>);
+
   }
 
   if (isAuthenticated === false) {
