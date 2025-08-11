@@ -185,7 +185,7 @@ const ForgotPasswordPage: React.FC = () => {
         </div>
       </motion.div>
       
-      <Footer />
+      <Footer variant="minimal" />
     </div>);
 
 };

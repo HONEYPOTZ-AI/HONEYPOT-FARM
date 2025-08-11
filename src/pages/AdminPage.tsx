@@ -195,7 +195,7 @@ const AdminPage: React.FC = () => {
         </motion.div>
       </div>
       
-      <Footer />
+      <Footer variant="minimal" />
     </div>);
 
 };

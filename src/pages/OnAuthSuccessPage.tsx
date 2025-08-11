@@ -108,7 +108,7 @@ const OnAuthSuccessPage: React.FC = () => {
         </Card>
       </motion.div>
       
-      <Footer />
+      <Footer variant="minimal" />
     </div>);
 
 };

@@ -275,7 +275,7 @@ const DashboardPage: React.FC = () => {
           </motion.div>
           
           {/* Footer */}
-          <Footer />
+          <Footer variant="dashboard" />
         </main>
       </div>
     </div>);

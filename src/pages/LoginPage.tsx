@@ -174,7 +174,7 @@ const LoginPage: React.FC = () => {
       </motion.div>
       
       {/* Footer */}
-      <Footer />
+      <Footer variant="minimal" />
     </div>);
 
 };
