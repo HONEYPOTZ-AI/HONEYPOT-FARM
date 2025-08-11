@@ -5,6 +5,7 @@ import { toast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
 import { Shield, Database, Users, AlertTriangle } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
+import Footer from '@/components/Footer';
 
 const AdminPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -193,6 +194,8 @@ const AdminPage: React.FC = () => {
           </div>
         </motion.div>
       </div>
+      
+      <Footer />
     </div>);
 
 };

@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, EyeOff, CheckCircle } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import ParticleBackground from '@/components/ParticleBackground';
+import Footer from '@/components/Footer';
 
 const ResetPasswordPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -223,6 +224,8 @@ const ResetPasswordPage: React.FC = () => {
           </CardContent>
         </Card>
       </motion.div>
+      
+      <Footer />
     </div>);
 
 };

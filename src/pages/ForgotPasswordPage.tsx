@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { Shield, Mail, ArrowLeft } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import ParticleBackground from '@/components/ParticleBackground';
+import Footer from '@/components/Footer';
 
 const ForgotPasswordPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -183,6 +184,8 @@ const ForgotPasswordPage: React.FC = () => {
           </Link>
         </div>
       </motion.div>
+      
+      <Footer />
     </div>);
 
 };

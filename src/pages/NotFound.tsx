@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import Footer from "@/components/Footer";
 
 const NotFound = () => {
   const location = useLocation();
@@ -51,6 +52,8 @@ const NotFound = () => {
           </Button>
         </motion.div>
       </motion.div>
+      
+      <Footer />
     </div>);
 
 };

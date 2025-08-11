@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Shield, CheckCircle, Clock } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
+import Footer from '@/components/Footer';
 
 const OnAuthSuccessPage: React.FC = () => {
   const [countdown, setCountdown] = useState(5);
@@ -106,6 +107,8 @@ const OnAuthSuccessPage: React.FC = () => {
           </CardContent>
         </Card>
       </motion.div>
+      
+      <Footer />
     </div>);
 
 };

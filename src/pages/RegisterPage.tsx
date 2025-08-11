@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { Shield, Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import ParticleBackground from '@/components/ParticleBackground';
+import Footer from '@/components/Footer';
 
 const RegisterPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -252,6 +253,8 @@ const RegisterPage: React.FC = () => {
           </Link>
         </div>
       </motion.div>
+      
+      <Footer />
     </div>);
 
 };
