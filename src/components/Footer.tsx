@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
               <img
                 src="https://cdn.ezsite.ai/AutoDev/59275/3e8c466c-e473-4711-9a16-d4aeaa925ac5.jpg"
                 alt="Honeypotz Logo"
-                className="h-8 w-auto opacity-90" />
+                className="h-12 w-auto opacity-90" />
 
               <span className="text-slate-300 text-sm font-medium">
                 Developed by Honeypotz Inc
