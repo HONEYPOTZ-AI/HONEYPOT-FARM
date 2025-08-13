@@ -111,10 +111,12 @@ const DashboardPage: React.FC = () => {
               </Button>
               
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
-                  <Shield className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
+                <img 
+                  src="https://cdn.ezsite.ai/AutoDev/59275/3e8c466c-e473-4711-9a16-d4aeaa925ac5.jpg" 
+                  alt="Honeypotz Logo" 
+                  className="h-8 w-8 rounded"
+                />
+                <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-yellow-400">
                   HONEYPOT FARM
                 </span>
               </div>

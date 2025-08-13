@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ParticleBackground from '@/components/ParticleBackground';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import ArchitectureShowcase from '@/components/ArchitectureShowcase';
 import Footer from '@/components/Footer';
 
 const HomePage = () => {
@@ -316,6 +317,9 @@ const HomePage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Architecture Showcase */}
+      <ArchitectureShowcase />
 
       {/* Footer */}
       <Footer />

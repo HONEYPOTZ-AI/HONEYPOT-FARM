@@ -33,15 +33,15 @@ const FooterManagement: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [editingLink, setEditingLink] = useState<FooterLink | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [analytics, setAnalytics] = useState<{ [key: string]: number }>({});
+  const [analytics, setAnalytics] = useState<{[key: string]: number;}>({});
   const { toast } = useToast();
 
   const sections = ['social_media', 'quick_links', 'contact', 'legal'];
   const icons = [
-    'Mail', 'Linkedin', 'Twitter', 'Github', 'Youtube', 'Phone', 'MessageCircle',
-    'BookOpen', 'Code', 'Newspaper', 'Shield', 'FileText', 'Cookie', 'Globe', 
-    'Users', 'Settings', 'Help', 'Info', 'Home', 'Search'
-  ];
+  'Mail', 'Linkedin', 'Twitter', 'Github', 'Youtube', 'Phone', 'MessageCircle',
+  'BookOpen', 'Code', 'Newspaper', 'Shield', 'FileText', 'Cookie', 'Globe',
+  'Users', 'Settings', 'Help', 'Info', 'Home', 'Search'];
+
 
   // Initialize empty form
   const getEmptyForm = (): FooterLink => ({
@@ -102,12 +102,12 @@ const FooterManagement: React.FC = () => {
         for (const link of data.data) {
           await window.ezsite.apis.tableCreate(33683, link);
         }
-        
+
         toast({
           title: "Footer Content Initialized",
           description: `Successfully created ${data.data.length} footer links`
         });
-        
+
         await loadFooterLinks();
       }
     } catch (error) {
@@ -126,7 +126,7 @@ const FooterManagement: React.FC = () => {
     try {
       setLoading(true);
       let response;
-      
+
       if (link.id) {
         response = await window.ezsite.apis.tableUpdate(33683, link);
       } else {
@@ -134,12 +134,12 @@ const FooterManagement: React.FC = () => {
       }
 
       if (response.error) throw response.error;
-      
+
       toast({
         title: "Link Saved",
         description: `Footer link "${link.link_title}" has been saved successfully`
       });
-      
+
       setIsDialogOpen(false);
       setEditingLink(null);
       await loadFooterLinks();
@@ -160,12 +160,12 @@ const FooterManagement: React.FC = () => {
       setLoading(true);
       const { error } = await window.ezsite.apis.tableDelete(33683, { "ID": id });
       if (error) throw error;
-      
+
       toast({
         title: "Link Deleted",
         description: "Footer link has been removed successfully"
       });
-      
+
       await loadFooterLinks();
     } catch (error) {
       toast({
@@ -202,8 +202,8 @@ const FooterManagement: React.FC = () => {
 
   // Get links by section
   const getLinksBySection = (sectionName: string) => {
-    return footerLinks.filter(link => link.section_name === sectionName)
-      .sort((a, b) => a.display_order - b.display_order);
+    return footerLinks.filter((link) => link.section_name === sectionName).
+    sort((a, b) => a.display_order - b.display_order);
   };
 
   return (
@@ -214,15 +214,15 @@ const FooterManagement: React.FC = () => {
           <p className="text-slate-400">Manage footer links, social media, and contact information</p>
         </div>
         <div className="flex items-center space-x-2">
-          {footerLinks.length === 0 && (
-            <Button 
-              onClick={initializeFooterContent} 
-              disabled={loading}
-              variant="outline"
-            >
+          {footerLinks.length === 0 &&
+          <Button
+            onClick={initializeFooterContent}
+            disabled={loading}
+            variant="outline">
+
               Initialize Content
             </Button>
-          )}
+          }
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button onClick={() => setEditingLink(getEmptyForm())}>
@@ -230,13 +230,13 @@ const FooterManagement: React.FC = () => {
                 Add Link
               </Button>
             </DialogTrigger>
-            <FooterLinkDialog 
-              link={editingLink} 
+            <FooterLinkDialog
+              link={editingLink}
               onSave={saveFooterLink}
               sections={sections}
               icons={icons}
-              isLoading={loading}
-            />
+              isLoading={loading} />
+
           </Dialog>
         </div>
       </div>
@@ -248,13 +248,13 @@ const FooterManagement: React.FC = () => {
         </TabsList>
 
         <TabsContent value="links" className="space-y-6">
-          {sections.map(section => (
-            <motion.div
-              key={section}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
+          {sections.map((section) =>
+          <motion.div
+            key={section}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}>
+
               <Card>
                 <CardHeader>
                   <div className="flex items-center justify-between">
@@ -267,7 +267,7 @@ const FooterManagement: React.FC = () => {
                       </CardDescription>
                     </div>
                     <Badge variant="secondary">
-                      {getLinksBySection(section).filter(l => l.is_active).length} active
+                      {getLinksBySection(section).filter((l) => l.is_active).length} active
                     </Badge>
                   </div>
                 </CardHeader>
@@ -284,8 +284,8 @@ const FooterManagement: React.FC = () => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {getLinksBySection(section).map(link => (
-                        <TableRow key={link.id}>
+                      {getLinksBySection(section).map((link) =>
+                    <TableRow key={link.id}>
                           <TableCell className="font-medium">
                             <div className="flex items-center space-x-2">
                               <span>{link.link_title}</span>
@@ -306,27 +306,27 @@ const FooterManagement: React.FC = () => {
                           </TableCell>
                           <TableCell>
                             <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => toggleLinkStatus(link)}
-                            >
-                              {link.is_active ? (
-                                <Eye className="w-4 h-4 text-green-400" />
-                              ) : (
-                                <EyeOff className="w-4 h-4 text-slate-400" />
-                              )}
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => toggleLinkStatus(link)}>
+
+                              {link.is_active ?
+                          <Eye className="w-4 h-4 text-green-400" /> :
+
+                          <EyeOff className="w-4 h-4 text-slate-400" />
+                          }
                             </Button>
                           </TableCell>
                           <TableCell>
                             <div className="flex items-center space-x-1">
                               <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => {
-                                  setEditingLink(link);
-                                  setIsDialogOpen(true);
-                                }}
-                              >
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              setEditingLink(link);
+                              setIsDialogOpen(true);
+                            }}>
+
                                 <Edit className="w-4 h-4" />
                               </Button>
                               <AlertDialog>
@@ -344,10 +344,10 @@ const FooterManagement: React.FC = () => {
                                   </AlertDialogHeader>
                                   <AlertDialogFooter>
                                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                    <AlertDialogAction 
-                                      onClick={() => link.id && deleteFooterLink(link.id)}
-                                      className="bg-red-600 hover:bg-red-700"
-                                    >
+                                    <AlertDialogAction
+                                  onClick={() => link.id && deleteFooterLink(link.id)}
+                                  className="bg-red-600 hover:bg-red-700">
+
                                       Delete
                                     </AlertDialogAction>
                                   </AlertDialogFooter>
@@ -356,13 +356,13 @@ const FooterManagement: React.FC = () => {
                             </div>
                           </TableCell>
                         </TableRow>
-                      ))}
+                    )}
                     </TableBody>
                   </Table>
                 </CardContent>
               </Card>
             </motion.div>
-          ))}
+          )}
         </TabsContent>
 
         <TabsContent value="analytics">
@@ -375,8 +375,8 @@ const FooterManagement: React.FC = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {sections.map(section => (
-                  <div key={section} className="p-4 bg-slate-800/50 rounded-lg">
+                {sections.map((section) =>
+                <div key={section} className="p-4 bg-slate-800/50 rounded-lg">
                     <h4 className="text-sm font-medium text-slate-400 capitalize mb-2">
                       {section.replace('_', ' ')}
                     </h4>
@@ -388,32 +388,32 @@ const FooterManagement: React.FC = () => {
                       {getLinksBySection(section).length} links
                     </div>
                   </div>
-                ))}
+                )}
               </div>
               
               <div className="mt-6">
                 <h4 className="text-lg font-semibold text-white mb-4">Top Performing Links</h4>
                 <div className="space-y-2">
-                  {footerLinks
-                    .sort((a, b) => b.click_count - a.click_count)
-                    .slice(0, 5)
-                    .map(link => (
-                      <div key={link.id} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
+                  {footerLinks.
+                  sort((a, b) => b.click_count - a.click_count).
+                  slice(0, 5).
+                  map((link) =>
+                  <div key={link.id} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
                         <div>
                           <span className="text-white font-medium">{link.link_title}</span>
                           <span className="text-slate-400 text-sm ml-2">({link.section_name})</span>
                         </div>
                         <Badge variant="secondary">{link.click_count} clicks</Badge>
                       </div>
-                    ))}
+                  )}
                 </div>
               </div>
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
-  );
+    </div>);
+
 };
 
 // Footer Link Dialog Component
@@ -454,19 +454,19 @@ const FooterLinkDialog: React.FC<{
       <div className="space-y-4">
         <div>
           <Label htmlFor="section">Section</Label>
-          <Select 
-            value={formData.section_name} 
-            onValueChange={(value) => setFormData(prev => ({ ...prev, section_name: value }))}
-          >
+          <Select
+            value={formData.section_name}
+            onValueChange={(value) => setFormData((prev) => ({ ...prev, section_name: value }))}>
+
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {sections.map(section => (
-                <SelectItem key={section} value={section} className="capitalize">
+              {sections.map((section) =>
+              <SelectItem key={section} value={section} className="capitalize">
                   {section.replace('_', ' ')}
                 </SelectItem>
-              ))}
+              )}
             </SelectContent>
           </Select>
         </div>
@@ -476,9 +476,9 @@ const FooterLinkDialog: React.FC<{
           <Input
             id="title"
             value={formData.link_title}
-            onChange={(e) => setFormData(prev => ({ ...prev, link_title: e.target.value }))}
-            placeholder="e.g., Contact Support"
-          />
+            onChange={(e) => setFormData((prev) => ({ ...prev, link_title: e.target.value }))}
+            placeholder="e.g., Contact Support" />
+
         </div>
 
         <div>
@@ -486,27 +486,27 @@ const FooterLinkDialog: React.FC<{
           <Input
             id="url"
             value={formData.link_url}
-            onChange={(e) => setFormData(prev => ({ ...prev, link_url: e.target.value }))}
-            placeholder="e.g., https://example.com or /contact"
-          />
+            onChange={(e) => setFormData((prev) => ({ ...prev, link_url: e.target.value }))}
+            placeholder="e.g., https://example.com or /contact" />
+
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label htmlFor="icon">Icon</Label>
-            <Select 
-              value={formData.link_icon} 
-              onValueChange={(value) => setFormData(prev => ({ ...prev, link_icon: value }))}
-            >
+            <Select
+              value={formData.link_icon}
+              onValueChange={(value) => setFormData((prev) => ({ ...prev, link_icon: value }))}>
+
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                {icons.map(icon => (
-                  <SelectItem key={icon} value={icon}>
+                {icons.map((icon) =>
+                <SelectItem key={icon} value={icon}>
                     {icon}
                   </SelectItem>
-                ))}
+                )}
               </SelectContent>
             </Select>
           </div>
@@ -517,9 +517,9 @@ const FooterLinkDialog: React.FC<{
               id="order"
               type="number"
               value={formData.display_order}
-              onChange={(e) => setFormData(prev => ({ ...prev, display_order: parseInt(e.target.value) }))}
-              min="1"
-            />
+              onChange={(e) => setFormData((prev) => ({ ...prev, display_order: parseInt(e.target.value) }))}
+              min="1" />
+
           </div>
         </div>
 
@@ -528,8 +528,8 @@ const FooterLinkDialog: React.FC<{
             <Switch
               id="external"
               checked={formData.is_external}
-              onCheckedChange={(checked) => setFormData(prev => ({ ...prev, is_external: checked }))}
-            />
+              onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, is_external: checked }))} />
+
             <Label htmlFor="external">External Link</Label>
           </div>
 
@@ -537,23 +537,23 @@ const FooterLinkDialog: React.FC<{
             <Switch
               id="active"
               checked={formData.is_active}
-              onCheckedChange={(checked) => setFormData(prev => ({ ...prev, is_active: checked }))}
-            />
+              onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, is_active: checked }))} />
+
             <Label htmlFor="active">Active</Label>
           </div>
         </div>
       </div>
 
       <DialogFooter>
-        <Button 
+        <Button
           onClick={() => onSave(formData)}
-          disabled={isLoading || !formData.link_title || !formData.link_url}
-        >
+          disabled={isLoading || !formData.link_title || !formData.link_url}>
+
           {isLoading ? 'Saving...' : 'Save Link'}
         </Button>
       </DialogFooter>
-    </DialogContent>
-  );
+    </DialogContent>);
+
 };
 
 export default FooterManagement;

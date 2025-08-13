@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
 
   // Icon mapping for dynamic icons
   const getIcon = (iconName: string) => {
-    const icons: { [key: string]: React.ComponentType<any> } = {
+    const icons: {[key: string]: React.ComponentType<any>;} = {
       Mail,
       Linkedin,
       Twitter,
@@ -56,12 +56,12 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
         "OrderByField": "display_order",
         "IsAsc": true,
         "Filters": [
-          {
-            "name": "is_active",
-            "op": "Equal",
-            "value": true
-          }
-        ]
+        {
+          "name": "is_active",
+          "op": "Equal",
+          "value": true
+        }]
+
       });
 
       if (error) throw error;
@@ -91,10 +91,10 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
       });
 
       // Update local state
-      setFooterLinks(prev => 
-        prev.map(l => 
-          l.id === link.id ? { ...l, click_count: l.click_count + 1 } : l
-        )
+      setFooterLinks((prev) =>
+      prev.map((l) =>
+      l.id === link.id ? { ...l, click_count: l.click_count + 1 } : l
+      )
       );
     } catch (error) {
       console.error('Error tracking footer click:', error);
@@ -109,9 +109,9 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
 
   // Get links by section
   const getLinksBySection = (sectionName: string) => {
-    return footerLinks
-      .filter(link => link.section_name === sectionName)
-      .sort((a, b) => a.display_order - b.display_order);
+    return footerLinks.
+    filter((link) => link.section_name === sectionName).
+    sort((a, b) => a.display_order - b.display_order);
   };
 
   // Render footer link with analytics
@@ -129,23 +129,23 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
           href={link.link_url}
           target="_blank"
           rel="noopener noreferrer"
-          {...linkProps}
-        >
+          {...linkProps}>
+
           <IconComponent className="w-4 h-4" />
           <span>{link.link_title}</span>
-        </a>
-      );
+        </a>);
+
     } else {
       return (
         <Link
           key={link.id}
           to={link.link_url}
-          {...linkProps}
-        >
+          {...linkProps}>
+
           <IconComponent className="w-4 h-4" />
           <span>{link.link_title}</span>
-        </Link>
-      );
+        </Link>);
+
     }
   };
 
@@ -171,8 +171,8 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
             </p>
           </div>
         </div>
-      </footer>
-    );
+      </footer>);
+
   }
 
   // Dashboard variant for internal pages
@@ -198,8 +198,8 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
             </div>
           </div>
         </div>
-      </footer>
-    );
+      </footer>);
+
   }
 
   // Default comprehensive footer with dynamic content
@@ -228,7 +228,7 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
               
               {/* Social Media Links */}
               <div className="flex items-center space-x-4 mt-4">
-                {getLinksBySection('social_media').map(link => {
+                {getLinksBySection('social_media').map((link) => {
                   const IconComponent = getIcon(link.link_icon);
                   return (
                     <a
@@ -237,11 +237,11 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-slate-400 hover:text-cyan-300 transition-colors p-2 hover:bg-slate-800/50 rounded-full"
-                      onClick={() => handleLinkClick(link)}
-                    >
+                      onClick={() => handleLinkClick(link)}>
+
                       <IconComponent className="w-5 h-5" />
-                    </a>
-                  );
+                    </a>);
+
                 })}
               </div>
             </div>
@@ -255,29 +255,29 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
                 <Link
                   to="/"
                   className="text-slate-400 hover:text-cyan-300 text-sm transition-colors"
-                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Home', link_url: '/', link_icon: '', is_external: false, display_order: 1, is_active: true, click_count: 0 })}
-                >
+                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Home', link_url: '/', link_icon: '', is_external: false, display_order: 1, is_active: true, click_count: 0 })}>
+
                   Home
                 </Link>
                 <Link
                   to="/dashboard"
                   className="text-slate-400 hover:text-cyan-300 text-sm transition-colors"
-                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Dashboard', link_url: '/dashboard', link_icon: '', is_external: false, display_order: 2, is_active: true, click_count: 0 })}
-                >
+                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Dashboard', link_url: '/dashboard', link_icon: '', is_external: false, display_order: 2, is_active: true, click_count: 0 })}>
+
                   Dashboard
                 </Link>
                 <Link
                   to="/login"
                   className="text-slate-400 hover:text-cyan-300 text-sm transition-colors"
-                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Sign In', link_url: '/login', link_icon: '', is_external: false, display_order: 3, is_active: true, click_count: 0 })}
-                >
+                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Sign In', link_url: '/login', link_icon: '', is_external: false, display_order: 3, is_active: true, click_count: 0 })}>
+
                   Sign In
                 </Link>
                 <Link
                   to="/register"
                   className="text-slate-400 hover:text-cyan-300 text-sm transition-colors"
-                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Get Started', link_url: '/register', link_icon: '', is_external: false, display_order: 4, is_active: true, click_count: 0 })}
-                >
+                  onClick={() => handleLinkClick({ id: 0, section_name: 'navigation', link_title: 'Get Started', link_url: '/register', link_icon: '', is_external: false, display_order: 4, is_active: true, click_count: 0 })}>
+
                   Get Started
                 </Link>
                 
@@ -334,8 +334,8 @@ const Footer: React.FC<FooterProps> = ({ variant = 'default', className = '' }) 
           </div>
         </Card>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
