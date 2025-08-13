@@ -123,11 +123,11 @@ const RegisterPage: React.FC = () => {
         <Card className="bg-slate-800/80 border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-500/10">
           <CardHeader className="text-center pb-8">
             <div className="flex items-center justify-center mb-4">
-              <img 
-                src="https://cdn.ezsite.ai/AutoDev/59275/3e8c466c-e473-4711-9a16-d4aeaa925ac5.jpg" 
-                alt="Honeypotz Logo" 
-                className="h-12 w-12 rounded-lg"
-              />
+              <img
+                src="https://cdn.ezsite.ai/AutoDev/59275/3e8c466c-e473-4711-9a16-d4aeaa925ac5.jpg"
+                alt="Honeypotz Logo"
+                className="h-12 w-12 rounded-lg" />
+
             </div>
             <CardTitle className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
               JOIN HONEYPOT FARM

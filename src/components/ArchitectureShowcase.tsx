@@ -6,37 +6,37 @@ import { Shield, Cloud, Database, Monitor, Zap, Server } from 'lucide-react';
 
 const ArchitectureShowcase = () => {
   const architectureFeatures = [
-    {
-      icon: <Shield className="h-6 w-6" />,
-      title: "TEE Backend",
-      description: "Hosted in Trusted Execution Environments for maximum security"
-    },
-    {
-      icon: <Server className="h-6 w-6" />,
-      title: "Thousands of Virtual Honeypots",
-      description: "Scalable deception technology across multiple environments"
-    },
-    {
-      icon: <Cloud className="h-6 w-6" />,
-      title: "Cloud & On-Prem Deployment",
-      description: "Flexible deployment across AWS and on-premises infrastructure"
-    },
-    {
-      icon: <Zap className="h-6 w-6" />,
-      title: "Real-time Threat Detection",
-      description: "Immediate attacker deception and data collection"
-    },
-    {
-      icon: <Monitor className="h-6 w-6" />,
-      title: "Centralized Dashboard",
-      description: "Comprehensive monitoring and analytics platform"
-    },
-    {
-      icon: <Database className="h-6 w-6" />,
-      title: "Threat Intelligence Loop",
-      description: "Continuous feedback and intelligence gathering"
-    }
-  ];
+  {
+    icon: <Shield className="h-6 w-6" />,
+    title: "TEE Backend",
+    description: "Hosted in Trusted Execution Environments for maximum security"
+  },
+  {
+    icon: <Server className="h-6 w-6" />,
+    title: "Thousands of Virtual Honeypots",
+    description: "Scalable deception technology across multiple environments"
+  },
+  {
+    icon: <Cloud className="h-6 w-6" />,
+    title: "Cloud & On-Prem Deployment",
+    description: "Flexible deployment across AWS and on-premises infrastructure"
+  },
+  {
+    icon: <Zap className="h-6 w-6" />,
+    title: "Real-time Threat Detection",
+    description: "Immediate attacker deception and data collection"
+  },
+  {
+    icon: <Monitor className="h-6 w-6" />,
+    title: "Centralized Dashboard",
+    description: "Comprehensive monitoring and analytics platform"
+  },
+  {
+    icon: <Database className="h-6 w-6" />,
+    title: "Threat Intelligence Loop",
+    description: "Continuous feedback and intelligence gathering"
+  }];
+
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
@@ -50,8 +50,8 @@ const ArchitectureShowcase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+          className="text-center mb-16">
+
           <Badge variant="outline" className="mb-4 text-cyan-300 border-cyan-300">
             Platform Architecture
           </Badge>
@@ -68,15 +68,15 @@ const ArchitectureShowcase = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+            transition={{ duration: 0.6 }}>
+
             <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
               <CardContent className="p-6">
-                <img 
+                <img
                   src="https://newoaks.s3.us-west-1.amazonaws.com/AutoDev/59275/a7803c8b-4021-46af-ba06-f251a0cf7308.png"
                   alt="Honeypot Farm Architecture"
-                  className="w-full h-auto rounded-lg"
-                />
+                  className="w-full h-auto rounded-lg" />
+
                 <h3 className="text-xl font-semibold text-white mt-4">System Architecture</h3>
                 <p className="text-gray-300 mt-2">Complete overview of our cybersecurity SaaS platform infrastructure</p>
               </CardContent>
@@ -86,15 +86,15 @@ const ArchitectureShowcase = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+            transition={{ duration: 0.6, delay: 0.1 }}>
+
             <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
               <CardContent className="p-6">
-                <img 
+                <img
                   src="https://newoaks.s3.us-west-1.amazonaws.com/AutoDev/59275/2d56734e-4ae4-41ef-ab8d-50f84091d973.png"
                   alt="Honeypot Deployment Architecture"
-                  className="w-full h-auto rounded-lg"
-                />
+                  className="w-full h-auto rounded-lg" />
+
                 <h3 className="text-xl font-semibold text-white mt-4">Deployment Strategy</h3>
                 <p className="text-gray-300 mt-2">Real-time threat detection with centralized monitoring and analytics</p>
               </CardContent>
@@ -104,13 +104,13 @@ const ArchitectureShowcase = () => {
 
         {/* Feature Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {architectureFeatures.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
+          {architectureFeatures.map((feature, index) =>
+          <motion.div
+            key={feature.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}>
+
               <Card className="bg-gray-800/30 border-gray-700 backdrop-blur-sm hover:bg-gray-800/50 transition-all duration-300 h-full">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
@@ -123,11 +123,11 @@ const ArchitectureShowcase = () => {
                 </CardContent>
               </Card>
             </motion.div>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default ArchitectureShowcase;

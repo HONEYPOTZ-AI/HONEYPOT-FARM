@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -13,10 +14,16 @@ import {
   Bell,
   User,
   Menu,
-  X } from
-'lucide-react';
+  X,
+  Network,
+  Target,
+  Zap
+} from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import ThreatDataVisualization from '@/components/ThreatDataVisualization';
+import NetworkMapper from '@/components/NetworkMapper';
+import PenetrationTesting from '@/components/PenetrationTesting';
+import StressScenarios from '@/components/StressScenarios';
 import ParticleBackground from '@/components/ParticleBackground';
 import Footer from '@/components/Footer';
 
@@ -111,11 +118,11 @@ const DashboardPage: React.FC = () => {
               </Button>
               
               <div className="flex items-center gap-3">
-                <img 
-                  src="https://cdn.ezsite.ai/AutoDev/59275/3e8c466c-e473-4711-9a16-d4aeaa925ac5.jpg" 
-                  alt="Honeypotz Logo" 
-                  className="h-8 w-8 rounded"
-                />
+                <img
+                  src="https://cdn.ezsite.ai/AutoDev/59275/3e8c466c-e473-4711-9a16-d4aeaa925ac5.jpg"
+                  alt="Honeypotz Logo"
+                  className="h-8 w-8 rounded" />
+
                 <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-yellow-400">
                   HONEYPOT FARM
                 </span>
@@ -232,46 +239,48 @@ const DashboardPage: React.FC = () => {
                 </p>
               </div>
 
-              {/* Threat Data Visualization */}
-              <ThreatDataVisualization />
-
-              {/* Quick Actions */}
+              {/* Main Content - Cybersecurity Tools */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="mt-8">
+                <Tabs defaultValue="threats" className="space-y-6">
+                  <TabsList className="grid w-full grid-cols-4 bg-white/10 border-white/20">
+                    <TabsTrigger value="threats" className="flex items-center gap-2">
+                      <Shield className="w-4 h-4" />
+                      Threat Detection
+                    </TabsTrigger>
+                    <TabsTrigger value="network" className="flex items-center gap-2">
+                      <Network className="w-4 h-4" />
+                      Network Mapper
+                    </TabsTrigger>
+                    <TabsTrigger value="pentest" className="flex items-center gap-2">
+                      <Target className="w-4 h-4" />
+                      Penetration Testing
+                    </TabsTrigger>
+                    <TabsTrigger value="stress" className="flex items-center gap-2">
+                      <Zap className="w-4 h-4" />
+                      Stress Scenarios
+                    </TabsTrigger>
+                  </TabsList>
 
-                <Card className="bg-slate-800/50 border-cyan-500/30">
-                  <CardHeader>
-                    <CardTitle className="text-cyan-300">Quick Actions</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <Button
-                        variant="outline"
-                        className="border-cyan-500/30 text-cyan-300 hover:border-cyan-400/50 hover:bg-cyan-500/10">
+                  <TabsContent value="threats" className="space-y-6">
+                    <ThreatDataVisualization />
+                  </TabsContent>
 
-                        <Shield className="w-4 h-4 mr-2" />
-                        Deploy Honeypot
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="border-orange-500/30 text-orange-300 hover:border-orange-400/50 hover:bg-orange-500/10">
+                  <TabsContent value="network" className="space-y-6">
+                    <NetworkMapper />
+                  </TabsContent>
 
-                        <AlertTriangle className="w-4 h-4 mr-2" />
-                        View Alerts
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="border-blue-500/30 text-blue-300 hover:border-blue-400/50 hover:bg-blue-500/10">
+                  <TabsContent value="pentest" className="space-y-6">
+                    <PenetrationTesting />
+                  </TabsContent>
 
-                        <Activity className="w-4 h-4 mr-2" />
-                        Generate Report
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <TabsContent value="stress" className="space-y-6">
+                    <StressScenarios />
+                  </TabsContent>
+                </Tabs>
               </motion.div>
             </div>
           </motion.div>
